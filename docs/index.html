@@ -1,0 +1,482 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: 300;
+		font-size: 18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+
+	h1 {
+		font-weight: 300;
+	}
+
+	.disclaimerbox {
+		background-color: #eee;
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	a:link,
+	a:visited {
+		color: #1367a7;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #208799;
+	}
+
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+
+	.layered-paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The third layer shadow */
+			15px 15px 0 0px #fff,
+			/* The fourth layer */
+			15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fourth layer shadow */
+			20px 20px 0 0px #fff,
+			/* The fifth layer */
+			20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fifth layer shadow */
+			25px 25px 0 0px #fff,
+			/* The fifth layer */
+			25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+
+<head>
+	<title>MiPa: Mixed Patch Infrared-Visible Modality Agnostic Object Detection</title>
+	<meta property="og:image" content="" />
+	<meta property="og:title" content="MiPa: Mixed Patch Infrared-Visible Modality Agnostic Object Detection" />
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:42px"><a style=color:red>Mi</a>xed <a style=color:red>Pa</a>tch Infrared-Visible Modality Agnostic Object Detection</span>
+		<table align=center width=600px>
+			<tr>
+
+				<td align=center width=120px>
+					<center>
+						<span style="font-size:24px"><a href="https://heitorrapela.github.io/"  target="_blank">Heitor R. Medeiros*</a></span>
+					</center>
+				</td>
+
+				<td align=center width=120px>
+					<center>
+						<span style="font-size:24px"><a href="https://www.linkedin.com/in/david-latortue-a3b37bb6/"  target="_blank">David Latortue*</a></span>
+					</center>
+				</td>
+
+		</table>
+
+		<table align=center width=600px>
+			<tr>
+
+				<td align=center width=120px>
+					<center>
+						<span style="font-size:24px"><a
+								href="https://scholar.google.com/citations?hl=en&user=TmfbdagAAAAJ&view_op=list_works&sortby=pubdate"  target="_blank">Eric Granger</a></span>
+					</center>
+				</td>
+
+				<td align=center width=120px>
+					<center>
+						<span style="font-size:24px"><a
+								href="https://scholar.google.com/citations?hl=en&user=aVfyPAoAAAAJ&view_op=list_works&sortby=pubdate"  target="_blank">Marco
+								Pedersoli</a></span>
+					</center>
+				</td>
+		</table>
+		<span style="font-size:30px">WACV 2025</span>
+
+		<table align=center width=650px>
+			<tr>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href='https://github.com/heitorrapela/MiPa' target="_blank">
+								[GitHub]</a></span>
+					</center>
+				</td>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a
+								href='https://arxiv.org/pdf/2404.18849v2'  target="_blank">
+								[Paper]</a></span>
+					</center>
+				</td>
+
+			</tr>
+			<tr>
+		</table>
+	</center>
+
+	<!--   		  <br><br>
+		  <hr> -->
+
+	<br>
+	
+	<table align=center width=100px>
+		<tr>
+			<td align=center width=75px>
+				<center>
+			<td><a href='https://github.com/heitorrapela/MiPa' target="_blank"><img class="round" style="height:300px"
+						src="./images/mipa_ours.png" /></a></td>
+			</center>
+		</tr>
+	</table>
+
+	</div>
+	<br><br>
+	<hr>
+
+
+	<table align=center width=850px>
+		<center>
+			<h1>Abstract</h1>
+		</center>
+	</table>
+	In real-world scenarios, using multiple modalities like visible (RGB) and infrared (IR) can greatly improve the performance of a predictive task such as object detection (OD). Multimodal learning is a common way to leverage these modalities, where multiple modality-specific encoders and a fusion module are used to improve performance. In this paper, we tackle a different way to employ RGB and IR modalities, where only one modality or the other is observed by a single shared vision encoder. This realistic setting requires a lower memory footprint and is more suitable for applications such as autonomous driving and surveillance, which commonly rely on RGB and IR data. However, when learning a single encoder on multiple modalities, one modality can dominate the other, producing uneven recognition results. This work investigates how to efficiently leverage RGB and IR modalities to train a common transformer-based OD vision encoder, while countering the effects of modality imbalance. For this, we introduce a novel training technique to Mix Patches (MiPa) from the two modalities, in conjunction with a patch-wise modality agnostic module, for learning a common representation of both modalities. Our experiments show that MiPa can learn a representation to reach competitive results on traditional RGB/IR benchmarks while only requiring a single modality during inference.	<br><br>
+	<hr>
+
+
+	<center>
+		<h1>Try our code</h1>
+	</center>
+
+	<table align=center width=850px>
+		<tr>
+			<td width=400px>
+				<center>
+					<a href="https://github.com/heitorrapela/MiPa" target="_blank"><img class="rounded" src="./images/mipa.png" height="300px"></img>
+						</href></a><br>
+				</center>
+			</td>
+		</tr>
+		<td width=400px>
+			<br>
+			<center>
+				<span style="font-size:14px"><i>Mixed Patches (MiPa) with Modality Agnostic (MA) module. In yellow is the patchify function. In purple is the MiPa module, followed by the feature extractor (encoder). In green is the modality classifier, and in pink is the detection head.</i>
+			</center>
+		</td>
+	</table>
+
+
+
+
+	<br>
+	<hr>
+
+
+	<table align=center width=425px>
+		<center>
+			<h1>Paper and Supplementary Material</h1>
+		</center>
+		<tr>
+
+			<td><a
+					href="https://arxiv.org/pdf/2404.18849" target="_blank"><img
+						class="layered-paper-big" style="height:175px" src="./images/paper_pdf_thumb.png" /></a></td>
+			<td><span style="font-size:14pt">
+					Heitor R. Medeiros, David Latortue, Eric Granger, Marco Pedersoli
+					<br><br>
+					Mixed Patch Visible-Infrared Modality Agnostic Object Detection.<br>
+					In WACV, 2025.<br><br>
+					(hosted on <a href="https://arxiv.org/pdf/2404.18849"  target="_blank">WACV2025</a>)</a>
+			</td>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+
+	<table align=center width=600px>
+		<tr>
+			<td><span style="font-size:14pt">
+					<center>
+						<a href="./bibtex.txt"  target="_blank">[Bibtex]</a>
+					</center>
+			</td>
+		</tr>
+	</table>
+
+	<hr>
+
+	<a name="bw_legacy"></a>
+	<center>
+		<h1>Experiments and Results</h1>
+	</center>
+
+
+
+
+
+	<left>
+		<h3>- Towards the optimal (ρ).</h3>
+	</left>
+	<table align=center width=850px>
+		<tr>
+			<td width=400px>
+				<center>
+					<a href="./images/exp1_optrho.png" target="_blank"><img class="rounded" src="./images/exp1_optrho.png" height="300px"></img></href>
+						</a><br>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<span style="font-size:14pt"> <b> Table 2</b></span>: Comparison of different ratio (ρ) sampling methods on LLVIP. Using DINO with SWIN backbone.
+
+
+
+	<left>
+		<h3>- Patch-wise Modality Agnostic Training.</h3>
+	</left>
+	<table align=center width=850px>
+		<tr>
+			<td width=400px>
+				<center>
+					<a href="./images/exp2_mipa_ma.png" target="_blank"><img class="rounded" src="./images/exp2_mipa_ma.png" height="650px"></img></href>
+						</a><br>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<span style="font-size:14pt"> <b> Table 3</b></span>:  Comparison of detection performance over different baselines and MiPa for different models on SWIN backbone for DINO
+	and Deformable DETR. The evaluation is done for RGB, IR, and the average of the modalities.
+
+
+
+	<left>
+		<h3>- Ablation on MA.</h3>
+	</left>
+	<table align=center width=850px>
+		<tr>
+			<td width=400px>
+				<center>
+					<a href="./images/exp3_mipa_ablation.png" target="_blank"><img class="rounded" src="./images/exp3_mipa_ablation.png" height="650px"></img></href>
+						</a><br>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<span style="font-size:14pt"> <b> Table 4</b></span>: MiPa ablation on γ and comparison with different baselines for DINO SWIN. The evaluation is done for RGB, IR, and the average of the modalities in terms of AP50 performance.
+
+
+
+
+	<left>
+		<h3>- Comparison with different RGB/IR Competitors.</h3>
+	</left>
+	<table align=center width=850px>
+		<tr>
+			<td width=400px>
+				<center>
+					<a href="./images/exp4_mipa_sota.png" target="_blank"><img class="rounded" src="./images/exp4_mipa_sota.png" height="350px"></img></href>
+						</a><br>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<span style="font-size:14pt"> <b> Table 5</b></span>:  Comparison with different multimodal works on RGB/IR	benchmarks.
+
+
+	
+	<left>
+		<h3>- Qualitative results.</h3>
+	</left>
+	<table align=center width=850px>
+		<tr>
+			<td width=400px>
+				<center>
+					<a href="./images/exp5_mipa_qualitative_results.png" target="_blank"><img class="rounded" src="./images/exp5_mipa_qualitative_results.png" height="850px"></img></href>
+						</a><br>
+				</center>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<span style="font-size:14pt"> <b> Figure 3</b></span>: Detection over different methods for two different daytimes: Night and Day and two different modalities: RGD and IR. Detectors
+	trained on RGB work better in the daytime. Detectors trained on IR work better at nighttime. Detectors trained on Both modalities in a naive way cannot work only on the dominant modality. Our MiPa manages to work well in all conditions.
+
+
+	<br><br><br><br>
+
+	<br>
+	<hr>
+	<br>
+
+	<table align=center width=1100px>
+		<tr>
+			<td width=400px>
+				<left>
+					<center>
+						<h1>Acknowledgements</h1>
+					</center>
+
+					This work was supported in part by Distech Controls Inc., the Natural Sciences and
+					Engineering Research Council of Canada, the Digital Research Alliance of Canada,
+					and MITACS.
+				</left>
+			</td>
+		</tr>
+	</table>
+
+
+	<br>
+	<hr>
+	<br>
+
+	<table align=center width=850px>
+		<br>
+		<tr>
+			<td width=400px>
+				<center>
+					<a href="https://www.etsmtl.ca/" target="_blank"><img class="rounded" src="./images/ets.png" height="100px"></img>
+						</href></a><br>
+				</center>
+			</td>
+			<td width=400px>
+				<center>
+					<a href="https://etsmtl.ca/" target="_blank"><img class="rounded" src="./images/ills.png" height="100px"></img>
+						</href></a><br>
+				</center>
+			</td>
+
+			<td width=400px>
+				<center>
+					<a href="https://etsmtl.ca/" target="_blank"><img class="rounded" src="./images/livia.png" height="100px"></img>
+						</href></a><br>
+				</center>
+			</td>
+		</tr>
+
+
+
+	</table>
+
+	<br><br>
+
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-75863369-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
+</body>
+
+</html>

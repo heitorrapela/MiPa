@@ -1,0 +1,6 @@
+@article{medeiros2024mipa,
+  title={MiPa: Mixed Patch Infrared-Visible Modality Agnostic Object Detection},
+  author={Medeiros, Heitor R and Latortue, David and Granger, Eric and Pedersoli, Marco},
+  journal={arXiv preprint arXiv:2404.18849},
+  year={2024}
+}
